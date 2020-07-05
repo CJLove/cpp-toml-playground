@@ -26,4 +26,4 @@ find_package(Threads)
 
 
 add_subdirectory( generic )
-# add_subdirectory( direct )
+add_subdirectory( direct )

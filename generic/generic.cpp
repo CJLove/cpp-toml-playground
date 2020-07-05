@@ -37,8 +37,8 @@ int main(int argc, char**argv)
     const auto topString = toml::find<std::string>(data,"top-string");
     std::cout << "top-string = " << topString << "\n";
 
-    const auto topInt = toml::find<int>(data,"top-int");
-    std::cout << "top-int = " << topInt << "\n";
+    const auto topInt = toml::find(data,"top-int");
+    std::cout << "top-int = " << topInt.as_integer() << "\n";
 
     const auto topArray = toml::find<std::vector<std::string>>(data,"top-array");
     std::cout << "top-array = " << topArray[0] << "\n";
@@ -47,15 +47,15 @@ int main(int argc, char**argv)
     std::cout << "nested-array = " << nestedArray << "\n";
     std::cout << "nested-array[0][0] = " << nestedArray[0][0] << "\n";
 
-    const auto nestedTable = toml::find(data,"nested-table");
-    std::cout << "nested-table.key1.key1-subkey2 = " << toml::find(nestedTable,"key1") << "\n";
+    //const auto nestedTable = toml::find(data,"nested-table");
+    //std::cout << "nested-table.key1.key1-subkey2 = " << toml::find(nestedTable,"key1") << "\n";
 
-    const auto nestedTable2 = toml::find(data,"nested-table2");
+    const auto nestedTable2 = toml::find(data,"nested-table");
     std::cout << "nested-table2 = " << nestedTable2 << "\n";
 
     const auto key1 = toml::find(nestedTable2,"key1");
     std::cout << "key1 = " << key1 << "\n";
 
     const auto subkey1 = toml::find(key1,"key1-subkey1");
-    std::cout << "key1-subkey1 = " << subkey1 << "\n";
+    std::cout << "key1-subkey1 = " << subkey1.as_string() << "\n";
 }
